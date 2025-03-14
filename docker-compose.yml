@@ -1,0 +1,12 @@
+services:
+  git-server:
+    build: .
+    container_name: git-server
+    restart: always
+    ports:
+      - "2222:22"
+      - "8080:8080"  # Web UI
+    volumes:
+      - ./lighttpd.conf:/etc/lighttpd/lighttpd.conf
+      - ./repos:/home/git/repos
+      - ./ssh-keys:/home/git/.ssh
